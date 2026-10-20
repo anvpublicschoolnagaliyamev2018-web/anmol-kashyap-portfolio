@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b16">
+<meta name="description" content="Anmol Kashyap — BCA student, creative designer and aspiring web developer.">
+<title>Anmol Kashyap | Portfolio</title>
+
+<style>
+:root {
+  --bg: #080b16;
+  --panel: #101729;
+  --gold: #f5c76b;
+  --blue: #54a8ff;
+  --text: #f5f7ff;
+  --muted: #a6afc3;
+  --border: rgba(255,255,255,.1);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:85px; }
+body {
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+a { color:inherit; text-decoration:none; }
+button,a { -webkit-tap-highlight-color:transparent; }
+.container { width:min(1120px,90%); margin:auto; }
+header {
+  position:sticky; top:0; z-index:100;
+  background:rgba(8,11,22,.88);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+nav {
+  min-height:72px; display:flex; align-items:center;
+  justify-content:space-between; gap:20px;
+}
+.brand { font-size:20px; font-weight:900; letter-spacing:1px; }
+.brand span { color:var(--gold); }
+.nav-links { display:flex; gap:22px; align-items:center; }
+.nav-links a { color:var(--muted); font-size:13px; transition:.25s; }
+.nav-links a:hover { color:var(--gold); }
+.menu-btn {
+  display:none; background:none; color:white;
+  border:1px solid var(--border); padding:7px 12px;
+  border-radius:8px; font-size:20px;
+}
+.hero {
+  min-height:88vh; display:flex; align-items:center;
+  position:relative; isolation:isolate; overflow:hidden;
+}
+.hero::before,.hero::after {
+  content:""; position:absolute; z-index:-1;
+  width:330px; height:330px; border-radius:50%;
+  filter:blur(100px); opacity:.22; animation:float 8s ease-in-out infinite alternate;
+}
+.hero::before { background:#1259bb; top:8%; left:-160px; }
+.hero::after { background:#a97920; bottom:-160px; right:-100px; animation-delay:-4s; }
+.hero-grid {
+  display:grid; grid-template-columns:1.2fr .8fr;
+  gap:45px; align-items:center; padding:75px 0;
+}
+.eyebrow {
+  color:var(--gold); text-transform:uppercase;
+  letter-spacing:3px; font-size:12px; font-weight:bold;
+}
+h1 {
+  font-size:clamp(43px,7vw,76px); line-height:1.08;
+  letter-spacing:-2px; margin:18px 0;
+}
+.gradient {
+  background:linear-gradient(100deg,var(--gold),#fff0bd,var(--blue));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.hero p,.section-intro { color:var(--muted); max-width:620px; }
+.actions { display:flex; flex-wrap:wrap; gap:13px; margin-top:28px; }
+.btn {
+  display:inline-flex; justify-content:center; align-items:center;
+  gap:8px; padding:12px 19px; border-radius:9px;
+  font-size:14px; font-weight:bold; transition:.25s;
+  border:1px solid var(--border);
+}
+.btn:hover { transform:translateY(-3px); }
+.btn-primary {
+  color:#17120a; background:linear-gradient(110deg,var(--gold),#ffe4a0);
+  border-color:transparent;
+}
+.btn-outline:hover { border-color:var(--blue); color:var(--blue); }
+.logo-stage { display:grid; place-items:center; min-height:320px; }
+.logo-orbit {
+  width:min(290px,70vw); aspect-ratio:1; border-radius:50%;
+  border:1px solid rgba(245,199,107,.35);
+  display:grid; place-items:center; position:relative;
+  box-shadow:0 0 70px rgba(45,118,255,.13),inset 0 0 55px rgba(245,199,107,.05);
+  animation:orbitGlow 4s ease-in-out infinite alternate;
+}
+.logo-orbit::before,.logo-orbit::after {
+  content:""; position:absolute; border-radius:50%;
+  border:1px dashed rgba(84,168,255,.35);
+}
+.logo-orbit::before { inset:15px; animation:spin 25s linear infinite; }
+.logo-orbit::after { inset:-12px; border-color:rgba(245,199,107,.22); }
+.monogram {
+  font-size:94px; font-weight:900; letter-spacing:-12px;
+  padding-right:12px;
+  background:linear-gradient(145deg,#fff5d8,var(--gold) 48%,var(--blue));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  text-shadow:0 0 38px rgba(245,199,107,.14);
+  animation:logoIn 1.2s ease both;
+}
+.logo-caption {
+  position:absolute; bottom:34px; font-size:10px;
+  letter-spacing:4px; color:var(--muted);
+}
+.scroll-note { color:var(--muted); font-size:12px; margin-top:35px; }
+section { padding:90px 0; }
+.section-head { margin-bottom:35px; }
+.section-kicker {
+  color:var(--blue); text-transform:uppercase;
+  font-size:11px; letter-spacing:3px; font-weight:bold;
+}
+h2 { font-size:clamp(29px,5vw,43px); line-height:1.2; margin:8px 0 12px; }
+h3 { font-size:19px; margin-bottom:10px; }
+.panel {
+  background:linear-gradient(145deg,rgba(18,27,47,.94),rgba(12,17,31,.94));
+  border:1px solid var(--border); border-radius:17px; padding:27px;
+}
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.about-text p { color:var(--muted); margin-bottom:14px; }
+.info-list { display:grid; gap:13px; }
+.info-item { display:flex; gap:12px; align-items:flex-start; }
+.info-icon { color:var(--gold); min-width:24px; }
+.info-item small { display:block; color:var(--muted); }
+.skills-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.skill-card {
+  padding:22px; border:1px solid var(--border);
+  border-radius:14px; background:var(--panel); transition:.25s;
+}
+.skill-card:hover,.project-card:hover { transform:translateY(-5px); border-color:rgba(245,199,107,.5); }
+.skill-symbol { font-size:28px; color:var(--gold); margin-bottom:12px; }
+.skill-card p,.project-card p { color:var(--muted); font-size:14px; }
+.level {
+  height:5px; background:#252e42; border-radius:10px;
+  margin-top:15px; overflow:hidden;
+}
+.level span { display:block; height:100%; width:var(--level); background:linear-gradient(90deg,var(--blue),var(--gold)); border-radius:10px; }
+.project-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+.project-card {
+  overflow:hidden; border:1px solid var(--border);
+  background:var(--panel); border-radius:17px; transition:.25s;
+}
+.project-preview {
+  min-height:190px; display:grid; place-items:center;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(84,168,255,.22),transparent 40%),
+    radial-gradient(circle at 80% 80%,rgba(245,199,107,.17),transparent 40%),
+    #0c1325;
+  border-bottom:1px solid var(--border); padding:25px;
+}
+.school-preview { text-align:center; }
+.school-preview .crest {
+  width:72px; height:82px; margin:auto auto 12px;
+  border:2px solid var(--gold); border-radius:16px 16px 25px 25px;
+  display:grid; place-items:center; color:var(--gold);
+  font-weight:900; font-size:20px; box-shadow:0 0 30px #f5c76b20;
+}
+.school-preview strong { display:block; font-size:15px; }
+.school-preview small { color:var(--gold); letter-spacing:2px; font-size:9px; }
+.project-body { padding:24px; }
+.tags { display:flex; flex-wrap:wrap; gap:7px; margin:15px 0 19px; }
+.tag {
+  font-size:11px; color:#d6e6ff; padding:5px 9px;
+  border-radius:6px; background:#182641; border:1px solid #263958;
+}
+.project-link { color:var(--gold); font-weight:bold; font-size:13px; }
+.journey { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.journey-card { border-left:2px solid var(--gold); padding:5px 0 5px 18px; }
+.journey-card p { color:var(--muted); font-size:14px; }
+.contact-grid { display:grid; grid-template-columns:.9fr 1.1fr; gap:25px; }
+.contact-links { display:grid; gap:12px; margin-top:20px; }
+.contact-link {
+  display:flex; gap:13px; align-items:center; padding:14px;
+  border:1px solid var(--border); border-radius:11px; transition:.2s;
+}
+.contact-link:hover { border-color:var(--gold); }
+.contact-link b { display:block; font-size:13px; }
+.contact-link small { color:var(--muted); overflow-wrap:anywhere; }
+.contact-form { display:grid; gap:14px; }
+.contact-form label { font-size:13px; color:var(--muted); display:block; margin-bottom:5px; }
+.contact-form input,.contact-form textarea {
+  width:100%; background:#0a1020; color:white;
+  border:1px solid var(--border); border-radius:9px;
+  padding:13px; font:inherit; outline:none;
+}
+.contact-form input:focus,.contact-form textarea:focus { border-color:var(--blue); }
+.contact-form textarea { resize:vertical; min-height:120px; }
+.form-note { font-size:11px; color:var(--muted); }
+footer { border-top:1px solid var(--border); padding:25px 0; }
+.footer-row { display:flex; justify-content:space-between; gap:15px; flex-wrap:wrap; color:var(--muted); font-size:12px; }
+.reveal { opacity:0; transform:translateY(22px); transition:opacity .7s ease,transform .7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+@keyframes spin { to { transform:rotate(360deg); } }
+@keyframes float { to { transform:translate(40px,-25px) scale(1.15); } }
+@keyframes orbitGlow { to { box-shadow:0 0 90px #327eff25,inset 0 0 60px #f5c76b12; } }
+@keyframes logoIn { from { opacity:0; transform:scale(.75); } to { opacity:1; transform:scale(1); } }
+
+@media(max-width:760px) {
+  .menu-btn { display:block; }
+  .nav-links {
+    display:none; position:absolute; top:72px; left:0; right:0;
+    padding:20px 5%; background:#0a1020;
+    border-bottom:1px solid var(--border);
+    flex-direction:column; align-items:flex-start; gap:17px;
+  }
+  .nav-links.open { display:flex; }
+  .hero { min-height:auto; }
+  .hero-grid { grid-template-columns:1fr; gap:20px; padding:65px 0 50px; }
+  .hero-copy { text-align:center; }
+  .hero-copy p { margin:auto; }
+  .actions { justify-content:center; }
+  .logo-stage { min-height:290px; grid-row:1; }
+  .logo-orbit { width:220px; }
+  .monogram { font-size:75px; }
+  .logo-caption { bottom:25px; }
+  section { padding:65px 0; }
+  .about-grid,.contact-grid,.project-grid { grid-template-columns:1fr; }
+  .skills-grid { grid-template-columns:repeat(2,1fr); }
+  .journey { grid-template-columns:1fr; gap:20px; }
+}
+@media(max-width:390px) {
+  .skills-grid { grid-template-columns:1fr; }
+  h1 { letter-spacing:-1px; }
+  .panel { padding:20px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; scroll-behavior:auto!important; transition-duration:.01ms!important; }
+  .reveal { opacity:1; transform:none; }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <nav class="container">
+    <a href="#home" class="brand">ANMOL<span>.</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#journey">Journey</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow">Creative Student • Aspiring Developer</div>
+      <h1>Hi, I'm<br><span class="gradient">Anmol Kashyap.</span></h1>
+      <p>Building My Future Through Code &amp; Creativity. I am a BCA student learning web development and programming while creating practical digital projects.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#projects">Explore My Work ↗</a>
+        <a class="btn btn-outline" href="#contact">Contact Me</a>
+      </div>
+      <div class="scroll-note">BCA STUDENT · WEB DEVELOPMENT · CREATIVE THINKING</div>
+    </div>
+    <div class="logo-stage" aria-label="Animated AK monogram">
+      <div class="logo-orbit">
+        <div class="monogram">AK</div>
+        <div class="logo-caption">ANMOL KASHYAP</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container reveal">
+    <div class="section-head">
+      <div class="section-kicker">A little about me</div>
+      <h2>Learning today.<br><span class="gradient">Building for tomorrow.</span></h2>
+    </div>
+    <div class="about-grid">
+      <div class="panel about-text">
+        <h3>Who I Am</h3>
+        <p>I am currently pursuing a Bachelor of Computer Applications (BCA) at IFTM University. I am interested in computer science, programming, software development and emerging technologies.</p>
+        <p>I am continuously improving my technical skills through learning and practical projects. My goal is to become a skilled software developer and build useful technology solutions.</p>
+        <p>As a beginner, I believe in learning step by step, experimenting with ideas and improving with every project.</p>
+      </div>
+      <div class="panel">
+        <h3>Quick Profile</h3>
+        <div class="info-list">
+          <div class="info-item"><span class="info-icon">✦</span><div><b>Name</b><small>Anmol Kashyap</small></div></div>
+          <div class="info-item"><span class="info-icon">✦</span><div><b>Education</b><small>BCA, 1st Semester</small></div></div>
+          <div class="info-item"><span class="info-icon">✦</span><div><b>University</b><small>IFTM University</small></div></div>
+          <div class="info-item"><span class="info-icon">✦</span><div><b>Current Focus</b><small>Web Design &amp; Programming</small></div></div>
+          <div class="info-item"><span class="info-icon">✦</span><div><b>Tools</b><small>Visual Studio Code (VS Code)</small></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container reveal">
+    <div class="section-head">
+      <div class="section-kicker">What I'm learning</div>
+      <h2>My <span class="gradient">Skills &amp; Tools</span></h2>
+      <p class="section-intro">I am building a strong foundation through regular practice. These are my current learning areas.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-symbol">⌘</div>
+        <h3>HTML</h3><p>Building the structure of web pages.</p>
+        <div class="level"><span style="--level:45%"></span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-symbol">◈</div>
+        <h3>CSS</h3><p>Layouts, styling and responsive design.</p>
+        <div class="level"><span style="--level:40%"></span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-symbol">JS</div>
+        <h3>JavaScript</h3><p>Learning interactivity and programming logic.</p>
+        <div class="level"><span style="--level:20%"></span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-symbol">⌘</div>
+        <h3>VS Code</h3><p>Practising coding and project development.</p>
+        <div class="level"><span style="--level:45%"></span></div>
+      </div>
+    </div>
+    <p class="form-note" style="margin-top:15px">Progress bars are illustrative learning indicators, not formal skill assessments. Update them as your experience grows.</p>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container reveal">
+    <div class="section-head">
+      <div class="section-kicker">Selected work</div>
+      <h2>Projects I've <span class="gradient">Built</span></h2>
+      <p class="section-intro">A practical project that reflects my interest in web design and useful digital experiences.</p>
+    </div>
+    <div class="project-grid">
+      <article class="project-card">
+        <div class="project-preview">
+          <div class="school-preview">
+            <div class="crest">ANV</div>
+            <strong>ANMOL NEW VENUS</strong>
+            <small>PUBLIC SCHOOL</small>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3>ANMOL NEW VENUS PUBLIC SCHOOL</h3>
+          <p>A school website project designed to present school information, admission details and fee-related information in an accessible format.</p>
+          <div class="tags">
+            <span class="tag">HTML</span><span class="tag">CSS</span>
+            <span class="tag">JavaScript</span><span class="tag">GitHub Pages</span>
+          </div>
+          <a class="project-link" href="https://anvpublicschoolnagaliyamev2018-web.github.io/Anmol-New-Venus-Public-School/" target="_blank" rel="noopener noreferrer">Visit Live Website ↗</a>
+        </div>
+      </article>
+      <article class="project-card">
+        <div class="project-preview">
+          <div style="text-align:center">
+            <div class="gradient" style="font-size:50px;font-weight:900">AK.</div>
+            <strong>PERSONAL PORTFOLIO</strong>
+            <small style="color:var(--muted);letter-spacing:2px">DESIGN · DEVELOPMENT</small>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3>Personal Portfolio Website</h3>
+          <p>This portfolio presents my learning journey, skills and work. I will keep improving it as I learn more technologies and complete new projects.</p>
+          <div class="tags">
+            <span class="tag">Responsive Design</span><span class="tag">CSS Animation</span>
+            <span class="tag">JavaScript</span>
+          </div>
+          <a class="project-link" href="#home">Explore This Portfolio ↑</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="journey">
+  <div class="container reveal">
+    <div class="section-head">
+      <div class="section-kicker">My development path</div>
+      <h2>The <span class="gradient">Learning Journey</span></h2>
+      <p class="section-intro">My focus is on developing fundamentals before moving to more advanced projects.</p>
+    </div>
+    <div class="journey">
+      <div class="panel journey-card">
+        <h3>01. Build Foundations</h3>
+        <p>Strengthen HTML, CSS, JavaScript and core programming concepts through consistent practice.</p>
+      </div>
+      <div class="panel journey-card">
+        <h3>02. Create Projects</h3>
+        <p>Build responsive websites, improve existing work and learn to maintain code with GitHub.</p>
+      </div>
+      <div class="panel journey-card">
+        <h3>03. Grow Professionally</h3>
+        <p>Develop problem-solving skills, learn new technologies and prepare for internships and future roles.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container reveal">
+    <div class="section-head">
+      <div class="section-kicker">Let's connect</div>
+      <h2>Have a project <span class="gradient">in mind?</span></h2>
+      <p class="section-intro">For website-related discussions, project collaboration or professional opportunities, contact me through the links below.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="panel">
+        <h3>Contact Details</h3>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:anmolkashyap6768@gmail.com">
+            <span class="info-icon">✉</span><div><b>Email</b><small>anmolkashyap6768@gmail.com</small></div>
+          </a>
+          <a class="contact-link" href="https://wa.me/919927440269" target="_blank" rel="noopener noreferrer">
+            <span class="info-icon">↗</span><div><b>WhatsApp</b><small>Send me a message</small></div>
+          </a>
+          <a class="contact-link" href="https://www.instagram.com/krajput.anmol/" target="_blank" rel="noopener noreferrer">
+            <span class="info-icon">◎</span><div><b>Instagram</b><small>@krajput.anmol</small></div>
+          </a>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Send a Message</h3>
+        <form class="contact-form" id="contactForm">
+          <div><label for="visitorName">Your Name</label><input id="visitorName" name="visitorName" placeholder="Enter your name" required maxlength="80"></div>
+          <div><label for="visitorEmail">Your Email</label><input id="visitorEmail" name="visitorEmail" type="email" placeholder="Enter your email" required maxlength="120"></div>
+          <div><label for="visitorMessage">Your Message</label><textarea id="visitorMessage" name="visitorMessage" placeholder="Write your message..." required maxlength="2000"></textarea></div>
+          <button type="submit" class="btn btn-primary">Continue via Email ↗</button>
+          <p class="form-note">This form opens your email app with a prepared message. It does not send or store messages on this website.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <span>© <span id="year"></span> Anmol Kashyap. All rights reserved.</span>
+    <span>Designed with curiosity &amp; code.</span>
+    <a href="#home" style="color:var(--gold)">Back to top ↑</a>
+  </div>
+</footer>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+  const isOpen = navLinks.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", String(isOpen));
+  menuBtn.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+  menuBtn.textContent = isOpen ? "×" : "☰";
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    menuBtn.setAttribute("aria-expanded", "false");
+    menuBtn.setAttribute("aria-label", "Open navigation");
+    menuBtn.textContent = "☰";
+  });
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const revealItems = document.querySelectorAll(".reveal");
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealItems.forEach(item => observer.observe(item));
+} else {
+  revealItems.forEach(item => item.classList.add("visible"));
+}
+
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("visitorName").value.trim();
+  const email = document.getElementById("visitorEmail").value.trim();
+  const message = document.getElementById("visitorMessage").value.trim();
+
+  if (!name || !email || !message) {
+    alert("Please fill in all fields.");
+    return;
+  }
+
+  const subject = encodeURIComponent("Portfolio Contact from " + name);
+  const body = encodeURIComponent(
+    "Name: " + name + "\nEmail: " + email + "\n\nMessage:\n" + message
+  );
+
+  window.location.href =
+    "mailto:anmolkashyap6768@gmail.com?subject=" + subject + "&body=" + body;
+});
+</script>
+</body>
+</html>
